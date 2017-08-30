@@ -13,10 +13,6 @@ import net.sf.jsqlparser.statement.create.table.CreateTable;
 import net.sf.jsqlparser.statement.select.Join;
 import net.sf.jsqlparser.statement.select.SubSelect;
 
-/**
- *
- * @author Rakshit
- */
 public class Bootstrapper {
 
     public static FileWriter opfile;
