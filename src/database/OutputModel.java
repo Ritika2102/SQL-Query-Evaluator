@@ -7,10 +7,7 @@ package database;
 
 import java.util.*;
 
-/**
- *
- * @author Rakshit
- */
+
 public class OutputModel {
 
     public ArrayList<String> Projection;
