@@ -39,10 +39,7 @@ import net.sf.jsqlparser.statement.select.Union;
 import net.sf.jsqlparser.statement.select.OrderByElement;
 import net.sf.jsqlparser.statement.select.SubSelect;
 
-/**
- *
- * @author Rakshit
- */
+
 public class Database {
 
     /**
