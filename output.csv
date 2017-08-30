@@ -1,0 +1,75 @@
+###########################################################################################################################################################
+SQL query 1
+SELECT C.c_custkey, C.c_name, sum(L.l_extendedprice * 1 - L.l_discount) AS revenue, C.c_acctbal, N.n_name, C.c_address, C.c_phone, C.c_comment FROM customer AS C, lineitem AS L, orders AS O, nation AS N JOIN customer AS C WHERE C.c_custkey = O.o_custkey AND L.l_orderkey = O.o_orderkey AND O.o_orderdate >= '1993-10-01' AND O.o_orderdate < '1994-10-01' AND L.l_returnflag = 'R' AND C.c_nationkey = N.n_nationkey GROUP BY C.c_custkey ORDER BY revenue DESC LIMIT 10
+
+PROJECTION : customer.c_custkey, customer.c_name, sum(L.l_extendedprice * 1 - L.l_discount) as revenue, customer.c_acctbal, nation.n_name, customer.c_address, customer.c_phone, customer.c_comment
+FROM : customer, orders, lineitem, nation
+SELECTION : orders.o_orderdate, lineitem.l_returnflag
+JOIN : customer.c_custkey, orders.o_custkey, lineitem.l_orderkey, orders.o_orderkey, customer.c_nationkey, nation.n_nationkey
+GROUPBY : customer.c_custkey
+ORDERBY : revenue
+
+13570,Customer#000013570,1119096.8697,974.13,IRAN,YgYy0B7M6sP52dQQ76wMaoQCzbOrNMROs,20-337-664-8885,furiously pending theodolites use. furiously regular accounts sleep carefully. slyly express packa
+55123,Customer#000055123,1081491.5455999998,3411.53,UNITED STATES,is2,9Lijq9Shz0qTSCL6,w2SaZpBQWyzK,34-342-524-7910,furiously unusual foxes according to the silent accounts solv
+64786,Customer#000064786,1081391.8663,6341.07,CHINA,CMuHpNLT5L8YjYprTr3PzD1fNpB0R7k,xn,28-294-929-6849,furiously bold deposits haggle furiously at the fluffily silent deposits. fluffil
+22642,Customer#000022642,1068937.9518,679.55,FRANCE,G8Z2GPKqbpES4t5uZMEm3F,16-767-558-1465,carefully express deposits use furiously according to the carefully f
+27919,Customer#000027919,1058691.6819000002,2980.69,KENYA,3, Kq0CGp41VebPYaESMv,,24-591-634-9214,blithely blithe deposits haggle quickly for the ironic foxes. furiously
+39493,Customer#000039493,1039861.9169999998,2138.97,INDIA,ykeoxcMNow4cmXe6dVB9nR4,8LCxiH79fW,18-931-234-9750,special, unusual packages wake fluffily pending, pending packages. pending, unusual accounts poa
+9220,Customer#000009220,1033795.2698999998,-339.16,ARGENTINA,Q5nhDeSZ6CMdoBqrQ7xkRNwg63jakq,11-763-453-7916,final, ironic asymptotes haggle 
+62395,Customer#000062395,1026231.4755000001,3088.46,IRAQ,9uAHRHYf R4xksEtRSfc6m,js3,5w57,21-813-764-8990,quickly even requests use closely quickly even deposits. slyly even theodolites affix 
+33010,Customer#000033010,1009800.5129000002,-351.97,JORDAN,rtyERTgwom2gL0YHY5,gY,23-240-600-1633,pending deposits cajole fluffily. carefully regular instructions along the ruthlessly special accounts sleep aroun
+26149,Customer#000026149,999160.2758000001,5835.93,JAPAN,sA,UxW 3E4MenFUtvFVzF5IH2rxFPE iNa5y,22-598-703-5586,fluffily even packages use slyly; quickl
+###########################################################################################################################################################
+SQL query 2
+SELECT l_extendedprice, l_discount, l_quantity FROM lineitem WHERE l_shipdate >= '1994-01-01' AND l_shipdate < '1994-01-03' AND l_discount > 0.05 AND l_discount < 0.07 AND l_quantity > 49
+
+PROJECTION : lineitem.l_extendedprice, lineitem.l_discount, lineitem.l_quantity
+FROM : lineitem
+SELECTION : lineitem.l_shipdate, lineitem.l_quantity
+JOIN : NULL
+GROUPBY : NULL
+ORDERBY : NULL
+
+96746.5,0.06,50.0
+58209.0,0.06,50.0
+###########################################################################################################################################################
+SQL query 3
+SELECT C.*, N.n_name, R.r_name FROM Customer AS C JOIN Customer AS C, Nation AS N, Region AS R WHERE N.n_nationkey = C.c_nationkey AND N.n_nationkey < 3 AND C.c_mktsegment = 'FURNITURE' AND C.c_acctbal > 9995
+
+PROJECTION : customer.c_custkey, customer.c_name, customer.c_address, customer.c_nationkey, customer.c_phone, customer.c_acctbal, customer.c_mktsegment, customer.c_comment, nation.n_name, region.r_name
+FROM : customer, nation, region
+SELECTION : customer.c_mktsegment, customer.c_acctbal
+JOIN : nation.n_nationkey, customer.c_nationkey
+GROUPBY : NULL
+ORDERBY : NULL
+
+34047,Customer#000034047,KJXso7Jngq8Be51p40X3Cc,0,10-106-423-5110,9998.97,FURNITURE,deposits around the slyly even requests nag sl,ALGERIA,AFRICA
+66615,Customer#000066615,fUZN9fBDyGu6ijkWpxRj,0xZi,2,12-431-953-3048,9996.72,FURNITURE,ideas are across the carefully express asymptotes. quickly regular pinto beans are furiously according to the blit,BRAZIL,AFRICA
+34047,Customer#000034047,KJXso7Jngq8Be51p40X3Cc,0,10-106-423-5110,9998.97,FURNITURE,deposits around the slyly even requests nag sl,ALGERIA,AMERICA
+66615,Customer#000066615,fUZN9fBDyGu6ijkWpxRj,0xZi,2,12-431-953-3048,9996.72,FURNITURE,ideas are across the carefully express asymptotes. quickly regular pinto beans are furiously according to the blit,BRAZIL,AMERICA
+34047,Customer#000034047,KJXso7Jngq8Be51p40X3Cc,0,10-106-423-5110,9998.97,FURNITURE,deposits around the slyly even requests nag sl,ALGERIA,ASIA
+66615,Customer#000066615,fUZN9fBDyGu6ijkWpxRj,0xZi,2,12-431-953-3048,9996.72,FURNITURE,ideas are across the carefully express asymptotes. quickly regular pinto beans are furiously according to the blit,BRAZIL,ASIA
+34047,Customer#000034047,KJXso7Jngq8Be51p40X3Cc,0,10-106-423-5110,9998.97,FURNITURE,deposits around the slyly even requests nag sl,ALGERIA,EUROPE
+66615,Customer#000066615,fUZN9fBDyGu6ijkWpxRj,0xZi,2,12-431-953-3048,9996.72,FURNITURE,ideas are across the carefully express asymptotes. quickly regular pinto beans are furiously according to the blit,BRAZIL,EUROPE
+34047,Customer#000034047,KJXso7Jngq8Be51p40X3Cc,0,10-106-423-5110,9998.97,FURNITURE,deposits around the slyly even requests nag sl,ALGERIA,MIDDLE EAST
+66615,Customer#000066615,fUZN9fBDyGu6ijkWpxRj,0xZi,2,12-431-953-3048,9996.72,FURNITURE,ideas are across the carefully express asymptotes. quickly regular pinto beans are furiously according to the blit,BRAZIL,MIDDLE EAST
+###########################################################################################################################################################
+SQL query 4
+SELECT C.*, N.n_name, R.r_name FROM Customer AS C JOIN Customer AS C, Nation AS N, Region AS R WHERE R.r_regionkey = N.n_regionkey AND N.n_nationkey = C.c_nationkey GROUP BY N.n_name HAVING Count(*) > 2000
+
+PROJECTION : customer.c_custkey, customer.c_name, customer.c_address, customer.c_nationkey, customer.c_phone, customer.c_acctbal, customer.c_mktsegment, customer.c_comment, nation.n_name, region.r_name
+FROM : customer, nation, region
+SELECTION : NULL
+JOIN : region.r_regionkey, nation.n_regionkey, nation.n_nationkey, customer.c_nationkey
+GROUPBY : nation.n_name
+ORDERBY : NULL
+
+5,Customer#000000005,hwBtxkoBF qSW4KrIk5U 2B1AU7H,3,13-750-942-6364,794.47,HOUSEHOLD,blithely final instructions haggle; stealthy sauternes nod; carefully regu,CANADA,AMERICA
+117,Customer#000000117,ydJe0csz9qY80V2skMVdCxJI,24,34-403-631-3505,3950.83,FURNITURE,ironic requests cajole furiously around the regular, special requests. dependencies grow quickly. slyly regu,UNITED STATES,AMERICA
+36,Customer#000000036,Y7wosIxbsBi,0nNiSG4V7,21,31-704-669-5769,4987.27,BUILDING,ideas hinder blithely final deposits. fu,VIETNAM,ASIA
+1,Customer#000000001,j5JsirBM9PsCy0O1m,15,25-989-741-2988,711.56,BUILDING,regular, regular platelets are fluffily according to the even attainments. blithely iron,MOROCCO,AFRICA
+3,Customer#000000003,fkRGN8nY4pkE,1,11-719-748-3364,7498.12,AUTOMOBILE,special packages wake. slyly reg,ARGENTINA,AMERICA
+18,Customer#000000018,YyukcsqIxlyuXs702Rd2Rl9D1z,6,16-155-215-1315,5494.43,BUILDING,furiously even frays among the fluffily furious epitaphs haggle slyly about the ironic theodolites. iro,FRANCE,EUROPE
+62,Customer#000000062,yBhgYoDvZX1,7,17-361-978-7059,595.61,MACHINERY,deposits cajole after the slyly unusual instructions. quickly fi,GERMANY,EUROPE
+4,Customer#000000004,4u58h fqkyE,4,14-128-190-5944,2866.83,MACHINERY,slyly final accounts sublate carefully. slyly ironic asymptotes nod across the quickly regular pack,EGYPT,MIDDLE EAST
+25,Customer#000000025,kBSktmaKkjm2
