@@ -28,10 +28,7 @@ import net.sf.jsqlparser.schema.Column;
 import net.sf.jsqlparser.schema.PrimitiveType;
 import net.sf.jsqlparser.statement.select.SubSelect;
 
-/**
- *
- * @author Rakshit
- */
+
 public class customeval extends Eval {
 
     String tablename; 
