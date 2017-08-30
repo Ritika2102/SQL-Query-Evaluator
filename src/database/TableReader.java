@@ -17,10 +17,7 @@ import java.util.logging.Logger;
 
 
 
-/**
- *
- * @author Rakshit
- */
+
 public class TableReader {
     
     private BufferedReader bufread;
